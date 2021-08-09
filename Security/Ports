@@ -28,6 +28,7 @@ port 554 - rtsp
 port 585 - Imap alt
 port 587 - smtp alt
 port 636 - LDAPS
+port 853 - DNS over TLS
 port 873 - rsync
 port 993 - Imap_SSL
 port 995 - PoP_SSL
@@ -42,6 +43,7 @@ port 2000 - Cisco/MikroTik Internal Speedtest
 port 2049 - nfs
 port 3389 - rdp
 port 5000 - UPnP
+port 5353 - mDNS
 port 5007 - linux-cnc server
 port 5060-5061 - SIP
 port 5432 - postgeresql
