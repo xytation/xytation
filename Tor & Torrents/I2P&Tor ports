@@ -1,0 +1,8 @@
+## note - these are the ports that i was able to find there is a possiblity of more ##
+## note - the reason that not everything is specified under one rule is that MikroTik doesn't allow more than a set amount of specified ports ##
+
+/ip firewall raw
+add chain=prerouting action=drop protocol=tcp dst-port=2827,4445,7644,7647,7650-7669,8002,8003,8123,8997-8999,9001,9030,9050-9053
+add cahin=prerouting action=drop protocol=tcp dst-port=9150,9152,9153
+add chain=prerouting action=drop protocol=udp dst-port=2827,4445,7644,7647,7650-7669,8002,8003,8123,8997-8999,9001,9030,9050-9053
+add cahin=prerouting action=drop protocol=udp dst-port=9150,9152,9153
