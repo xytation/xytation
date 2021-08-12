@@ -27,3 +27,5 @@ add address=Allan.soundsgoodstockholm.com list=additionalblacklist
 add address=192.2.0.0/16 comment=TESTING list=additionalblacklist
 add address=79.135.72.34 list=additionalblacklist
 add address=ea.skfblack.review list=additionalblacklist
+add address=clk.rtpdn14.com list=additionalblacklist
+add address=venetrigni.com list=additionalblacklist
