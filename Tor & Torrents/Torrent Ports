@@ -1,9 +1,12 @@
+## note - these are some of the ports that i was able to find that torrnets use ##
+
 /ip firewall raw
 add chain=prerouting action=drop protocol=tcp dst-port=3000,6771,6881-7000,9000,9091
 add chain=prerouting action=drop protocol=udp dst-port=3000,6771,6881-7000,9000,9091
 
 
 ## note - the following ports are included in list so use at own risk ##
-7000=> avaria server management consloe
-6924=> split-ping
-6891-6901=> windows live messenger
+
+port 7000 - avaria server management consloe
+port 6924 - split-ping
+port 6891-6901 - windows live messenger
