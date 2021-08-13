@@ -1,0 +1,12 @@
+/ip firewall mangle
+add action=mark-connection chain=prerouting comment=Zoom new-connection-mark=Zoom-Con passthrough=yes src-address-list=zoom_ip
+add action=mark-connection chain=prerouting dst-address-list=zoom_ip new-connection-mark=Zoom-Con passthrough=yes
+add action=mark-packet chain=prerouting connection-mark=Zoom-Con new-packet-mark=Zoom-Pkt passthrough=no
+
+
+## note - Priority and max-limit and limit-at change to your choice ##
+/queue simple
+add limit-at=6M/6M max-limit=6M/6M name="3) Zoom" packet-marks=Whatsapp-Pkt parent=Global priority=4/4 target=""
+
+## note - Parent Queue is important ##
+add limit-at=10M/10M max-limit=10M/10M name=Global priority=1/1 target=""
