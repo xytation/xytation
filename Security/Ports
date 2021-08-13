@@ -42,6 +42,7 @@ port 1911 - mtp
 port 2000 - Cisco/MikroTik Internal Speedtest
 port 2049 - nfs
 port 3389 - rdp
+port 4460 - Network Time Security Key
 port 5000 - UPnP
 port 5353 - mDNS
 port 5007 - linux-cnc server
