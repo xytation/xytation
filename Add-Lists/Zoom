@@ -92,4 +92,4 @@ add address=213.244.140.0/24 list=zoom_ip
 add address=221.122.88.64/27 list=zoom_ip
 add address=221.122.88.128/25 list=zoom_ip
 add address=221.122.89.128/25 list=zoom_ip
-add address=221.123.139.192/27 list=z
+add address=221.123.139.192/27 list=zoom_ip
