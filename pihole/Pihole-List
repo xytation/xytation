@@ -21,8 +21,6 @@ https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimet
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts
 https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts
 https://raw.githubusercontent.com/jdlingyu/ad-wars/master/hosts
-https://raw.githubusercontent.com/HenningVanRaumle/pihole-ytadblock/master/ytadblock.txt
-https://raw.githubusercontent.com/HenningVanRaumle/pihole-ytadblock/master/ytadblock.txt.backup
 https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
 https://www.sunshine.it/blacklist.txt
 https://v.firebog.net/hosts/static/w3kbl.txt
@@ -38,8 +36,6 @@ https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-malware.txt
 https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Risk/hosts
 https://urlhaus.abuse.ch/downloads/hostfile/
-https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/youtubelist.txt
-https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/crowed_list.txt
 https://raw.githubusercontent.com/badmojr/1Hosts/master/Pro/domains.txt
 https://raw.githubusercontent.com/xxcriticxx/.pl-host-file/master/hosts.txt
 https://raw.githubusercontent.com/badmojr/1Hosts/master/mini/hosts.txt
@@ -48,11 +44,8 @@ https://raw.githubusercontent.com/Goooler/1024_hosts/master/hosts
 https://block.energized.pro/ultimate/formats/domains.txt
 https://block.energized.pro/extensions/xtreme/formats/domains.txt
 https://block.energized.pro/extensions/regional/formats/domains.txt
-https://ewpratten.retrylife.ca/youtube_ad_blocklist/hosts.ipv4.txt
 https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Hosts/GoodbyeAds.txt
-https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Extension/GoodbyeAds-YouTube-AdBlock.txt
 https://gitlab.com/The_Quantum_Alpha/the-quantum-ad-list/-/raw/master/Individual%20lists/The_Quantum_Simply-ads-list.txt
-https://gitlab.com/The_Quantum_Alpha/the-quantum-ad-list/-/raw/master/Individual%20lists/The_Quantum_Youtube-Ads-List.txt
 https://gitlab.com/The_Quantum_Alpha/the-quantum-ad-list/-/raw/master/Individual%20lists/The_Quantum_Abuse-List.txt
 https://gitlab.com/The_Quantum_Alpha/the-quantum-ad-list/-/raw/master/Individual%20lists/Extreme%20lists/The_Quantum_Extreme_Youtube_Ad-List.txt
 https://gitlab.com/The_Quantum_Alpha/the-quantum-ad-list/-/raw/master/For%20hosts%20file/The_Quantum_Ad-List.txt
