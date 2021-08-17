@@ -1,5 +1,4 @@
 /ip firewall address-list
-add address=disorderstatus.ru list=additionalblacklist
 add address=80.158.59.174 list=additionalblacklist
 add address=80.158.63.78 list=additionalblacklist
 add address=zancetom.com comment=searchtopresults list=additionalblacklist
@@ -23,11 +22,45 @@ add address=192.187.96.0/19 list=additionalblacklist
 add address=hldza.com list=additionalblacklist
 add address=80.158.0.0/20 list=additionalblacklist
 add address=5.9.124.253 list=additionalblacklist
+add address=disorderstatus.ru list=additionalblacklist
 add address=Allan.soundsgoodstockholm.com list=additionalblacklist
 add address=192.2.0.0/16 comment=TESTING list=additionalblacklist
 add address=79.135.72.34 list=additionalblacklist
-add address=ea.skfblack.review list=additionalblacklist
+add address=Dickens.shelleywoodphoenix.com list=additionalblacklist
+add address=Mitchell.boostcannon.com list=additionalblacklist
 add address=clk.rtpdn14.com list=additionalblacklist
 add address=venetrigni.com list=additionalblacklist
-add address=216.218.185.162 list=additionalblacklist
-add address=glamourgreek.com list=additionalblacklist
+add address=216.218.185.162 comment=corebot list=additionalblacklist
+add address=169.229.3.89-94 list=additionalblacklist
+add address=71.6.216.32/27 list=additionalblacklist
+add address=141.212.121.0-141.212.122.255 list=additionalblacklist
+add address=107.150.52.82-107.150.52.86 list=additionalblacklist
+add address=74.82.47.0/26 list=additionalblacklist
+add address=184.105.139.0-184.105.139.126 list=additionalblacklist
+add address=184.105.247.194-184.105.247.254 list=additionalblacklist
+add address=216.218.206.66-216.218.206.126 list=additionalblacklist
+add address=185.35.62.0/24 list=additionalblacklist
+add address=64.125.239.0/24 list=additionalblacklist
+add address=137.226.113.0/26 list=additionalblacklist
+add address=scan.sba-research.org comment=scan.sba-research.org list=additionalblacklist
+add address=nlpproject.info comment=nlpproject.info list=additionalblacklist
+add address=5thcolumn.net comment=5thcolumn.net list=additionalblacklist
+add address=telnetscanproject.org comment=telnetscanproject.org list=additionalblacklist
+add address=128.187.82.224/27 list=additionalblacklist
+add address=104.152.52.21-104.152.52.39 list=additionalblacklist
+add address=168.1.128.32-168.1.128.95 list=additionalblacklist
+add address=169.45.161.160/27 list=additionalblacklist
+add address=169.54.233.112/28 list=additionalblacklist
+add address=169.54.244.64/27 list=additionalblacklist
+add address=169.53.184.0/27 list=additionalblacklist
+add address=158.85.81.112/28 list=additionalblacklist
+add address=196.52.43.0/24 list=additionalblacklist
+add address=92.118.160.0/23 list=additionalblacklist
+add address=185.173.35.0/24 list=additionalblacklist
+add address=tequilaboomboom.club list=additionalblacklist
+add address=185.232.64.20/30 list=additionalblacklist
+add address=outspoken.ca list=additionalblacklist
+add address=185.216.140.180 list=additionalblacklist
+add address=198.108.66.240 list=additionalblacklist
+add address=phenome.ca list=additionalblacklist
+add address=212.95.124.190 list=additionalblacklist
