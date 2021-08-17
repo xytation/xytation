@@ -19,7 +19,6 @@ remove [find list=blacklist comment=$description]
 }
 
 $update url=https://feodotracker.abuse.ch/downloads/ipblocklist_recommended.txt description="BotNetC&C" delimiter=("\r")
-$update url=https://raw.githubusercontent.com/stamparm/ipsum/master/levels/6.txt description="Blacklist level6" delimiter=("\n")
 $update url=https://www.spamhaus.org/drop/drop.txt description="Spamhaus DROP" delimiter=("\_")
 $update url=https://sslbl.abuse.ch/blacklist/sslipblacklist.txt description="Abuse.ch BotNet SSL" delimiter=("\r")
 $update url=https://www.spamhaus.org/drop/edrop.txt description="Spamhaus EDROP" delimiter=("\_")
@@ -27,3 +26,6 @@ $update url=https://feodotracker.abuse.ch/downloads/ipblocklist.txt description=
 $update url=https://raw.githubusercontent.com/pallebone/StrictBlockPAllebone/master/BlockIP.txt description="Pallebone IPs" delimiter=("\r")
 $update url=https://lists.blocklist.de/lists/all.txt description="Blocklist.de" delimiter=("\n")
 :log info "Update Complete"
+
+# note - github directory changed #
+#$update url=https://raw.githubusercontent.com/stamparm/ipsum/master/levels/6.txt description="Blacklist level6" delimiter=("\n")
