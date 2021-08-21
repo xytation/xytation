@@ -21,3 +21,9 @@ iptables -t raw -A PREROUTING -m set --match-set malic src -j DROP
 iptables -t raw -A OUTPUT -m set --match-set malic src -j DROP
 iptables -t raw -A PREROUTING -m set --match-set malic dst -j DROP
 iptables -t raw -A OUTPUT -m set --match-set malic dst -j DROP
+
+
+## note - To save ipset and iptables do the followning ##
+
+iptables-save
+ipset save > /etc/ipset.conf
