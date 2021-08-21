@@ -1,0 +1,6 @@
+iptables -A INPUT -m state --state RELATED,ESTABLISHED,NEW -j ACCEPT
+iptables -A FORWARD -m state --state RELATED,ESTABLISHED,NEW -j ACCEPT
+iptables -A OUTPUT -m state --state RELATED,ESTABLISHED,NEW -j ACCEPT
+iptables -A INPUT -m state --state INVALID,UNTRACKED -j DROP
+iptables -A FORWARD -m state --state INVALID,UNTRACKED -j DROP
+iptables -A OUTPUT -m state --state INVALID,UNTRACKED -j DROP
