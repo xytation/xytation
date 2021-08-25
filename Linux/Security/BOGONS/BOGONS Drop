@@ -1,0 +1,24 @@
+## note - this is to drop your non-public ip's ##
+
+## note - this creates the address list ##
+ipset create BOGONS hash:net
+
+## note - this is a manual way of adding the bogon ip's ##
+ipset add BOGONS 0.0.0.0/8
+ipset add BOGONS 10.0.0.0/8
+ipset add BOGONS 100.64.0.0/10
+ipset add BOGONS 127.0.0.0/8
+ipset add BOGONS 169.254.0.0/16
+ipset add BOGONS 172.16.0.0/12
+ipset add BOGONS 192.0.0.0/24
+ipset add BOGONS 192.0.2.0/24
+ipset add BOGONS 192.168.0.0/16
+ipset add BOGONS 198.18.0.0/15
+ipset add BOGONS 198.51.100.0/24
+ipset add BOGONS 203.0.113.0/24
+ipset add BOGONS 224.0.0.0/3
+
+## note - this drops the bogon ip's ##
+## note - this 
+iptables -A INPUT -m set --match-set BOGONS src -j DROP -i ens33
+iptables -A INPUT -m set --match-set BOGONS dst -j DROP -i ens33
