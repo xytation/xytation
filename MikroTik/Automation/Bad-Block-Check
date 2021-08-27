@@ -1,3 +1,3 @@
-## note - this is to find any bad blocks in your mikrotik device ##
+## note - this is to find any bad blocks on your mikrotik device ##
 
 :if ([/system resource get value-name=bad-blocks ] =0) do={/log info message="No Bad Blocks Found"} else={[/log error message="Bad Blocks Found"]}
