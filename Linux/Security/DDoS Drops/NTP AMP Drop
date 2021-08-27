@@ -1,0 +1,5 @@
+## note - NTP amp drop the connection limit can be changed accoring to your specific setup and the tag -i can be changed according to your in-interface ##
+
+iptables -A INPUT -p tcp -m multiport --dports 123 -m conntrack --ctstate NEW -m limit --limit 128/sec --limit-burst 64 -j DROP -i ens33
+iptables -A INPUT -p udp -m multiport --dports 123 -m conntrack --ctstate NEW -m limit --limit 128/sec --limit-burst 64 -j DROP -i ens33
+iptables -A INPUT -p udplite -m multiport --dports 123 -m conntrack --ctstate NEW -m limit --limit 128/sec --limit-burst 64 -j DROP -i ens33
