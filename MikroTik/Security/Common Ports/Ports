@@ -21,6 +21,7 @@ port 135-139 - netbios
 port 143 -Imap
 port 152 - bftp
 port 161-162 - snmp
+port 179 - BGP
 port 389 - LDAP
 port 443 - HTTPS
 port 465 - smtp alt
@@ -28,6 +29,7 @@ port 554 - rtsp
 port 585 - Imap alt
 port 587 - smtp alt
 port 636 - LDAPS
+port 646 - LDP
 port 853 - DNS over TLS
 port 873 - rsync
 port 993 - Imap_SSL
@@ -36,6 +38,8 @@ port 1080 - socks
 port 1433-1434 - ms-sql
 port 1435 - ibm-cics
 port 1518 - quadrox dvr
+port 1698,1699 - RSVP TE Tunnels
+port 1701 - L2TP
 port 1723 - pptp
 port 1900 - SSDP/UPnP
 port 1911 - mtp
@@ -44,9 +48,10 @@ port 2049 - nfs
 port 3389 - rdp
 port 4460 - Network Time Security Key
 port 5000 - UPnP
-port 5353 - mDNS
 port 5007 - linux-cnc server
 port 5060-5061 - SIP
+port 5246,5247 - CAPsMAN
+port 5353 - mDNS
 port 5432 - postgeresql
 port 5678 - MNDP/CDP
 port 8008 - fortinet
