@@ -54,6 +54,7 @@ port 5246,5247 - CAPsMAN
 port 5353 - mDNS
 port 5432 - postgeresql
 port 5678 - MNDP/CDP
+port 6343 - OpenFlow
 port 8008 - fortinet
 port 8080 - http-alt
 port 8291 - Winbox
