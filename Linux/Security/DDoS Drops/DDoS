@@ -1,7 +1,16 @@
 ## note - this limits and burst can be changed to personal liking ##
 
+## note - this creates the DDoS chain ##
 iptables -N DDoS
+
+## note - this matches the connection state to new created DDoS ##
 iptables -A INPUT --match conntrack --ctstate NEW -j DDoS
+
+## note - matches connection limit to 128bits per second with a burst of 64 and accepts it ##
 iptables -A DDoS -m limit --limit 128/sec --limit-burst 64 -j ACCEPT
+
+## note - does the exact same as above but only with the hash limit ##
 iptables -A DDoS --match hashlimit --hashlimit-mode srcip --hashlimit-upto 128/sec --hashlimit-burst 64 --hashlimit-name conn_rate_limit -j ACCEPT
+
+## note - the moment the connection and hash limit rate has been exceeded then this line will drop all the excess input traffic that doesn't match the above criteria ##
 iptables -A DDoS -j DROP
