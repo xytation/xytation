@@ -3,8 +3,8 @@
 ## note - this creates the DDoS chain ##
 iptables -N DDoS
 
-## note - this matches the connection state to new created DDoS ##
-iptables -A INPUT --match conntrack --ctstate NEW -j DDoS
+## note - this matches the connection state to new created DDoS over in-interface ens33 which is specified with tag -i and should be changed accordingly ##
+iptables -A INPUT -i ens33 --match conntrack --ctstate NEW -j DDoS
 
 ## note - matches connection limit to 128bits per second with a burst of 64 and accepts it ##
 iptables -A DDoS -m limit --limit 128/sec --limit-burst 64 -j ACCEPT
