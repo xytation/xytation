@@ -1,3 +1,4 @@
 ## note - this is to find any bad blocks on your mikrotik device ##
 
-:if ([/system resource get value-name=bad-blocks ] =0) do={/log info message="No Bad Blocks Found"} else={[/log error message="Bad Blocks Found"]}
+:global block ([/system resource get value-name=bad-blocks ] =0)
+:if $block do={/log info message="No Bad Blocks Found"} else={[/log error message="Bad Blocks Found"]}
