@@ -1,0 +1,7 @@
+## note - this limits and burst can be changed to personal liking ##
+
+iptables -N DDoS
+iptables -A INPUT --match conntrack --ctstate NEW -j DDoS
+iptables -A DDoS -m limit --limit 128/sec --limit-burst 64 -j ACCEPT
+iptables -A DDoS --match hashlimit --hashlimit-mode srcip --hashlimit-upto 128/sec --hashlimit-burst 64 --hashlimit-name conn_rate_limit -j ACCEPT
+iptables -A DDoS -j DROP
