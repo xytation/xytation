@@ -1,0 +1,13 @@
+## note - this creates the NTP chain that we will be using ##
+iptables -N NTP
+
+## note -  this section specifies the when it's input ( -A INPUT ) over these following ports ( -m multiport --dports 123 ) with protocol ( -p tcp [ or other specified protocol ] ) and matches connection state with new ( --match conntrack --ctstate NEW ) and jumps to chain NTP ( -j NTP ) when all previous things are met over in-interface ( -i ens33 [ which can be changed accordingly ] ) ##
+iptables -A INPUT -i ens33 -p tcp -m multiport --dports 123 --match conntrack --ctstate NEW -j NTP
+iptables -A INPUT -i ens33 -p udp -m multiport --dports 123 --match conntrack --ctstate NEW -j NTP
+iptables -A INPUT -i ens33 -p udplite -m multiport --dports 123 --match conntrack --ctstate NEW -j NTP
+
+## note - once the above is met we then use the NTP chain ( -A NTP ) then we match limit ( -m limit ) when then we set limit rate and burst rate ( --limit 128/sec --limit-burst 64 ) if it falls in this category then we accept ( -j ACCEPT )
+iptables -A NTP -m limit --limit 128/sec --limit-burst 64 -j ACCEPT
+
+## note - once the above specified limit gets exceeded then it jumps to the following and drops the excess traffic ##
+iptables -A NTP -j DROP
