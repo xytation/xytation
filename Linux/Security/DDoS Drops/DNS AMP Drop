@@ -1,5 +1,23 @@
 ## note - DNS amp drop the connection limit can be changed accoring to your specific setup and the tag -i can be changed according to your in-interface ##
 
+## note - this creates the DNS chain that we will be using ##
+iptables -N DNS
+
+## note -  this section specifies the when it's input ( -A INPUT ) over these following ports ( -m multiport --dports 53,5353,853 ) with protocol ( -p tcp [ or other specified protocol ] ) and matches connection state with new ( --match conntrack --ctstate NEW ) and jumps to chain DNS ( -j DNS ) when all previous things are met over in-interface ( -i ens33 [ which can be changed accordingly ] ) ##
+iptables -A INPUT -i ens33 -p tcp -m multiport --dports 53,5353,853 --match conntrack --ctstate NEW -j DNS
+iptables -A INPUT -i ens33 -p udp -m multiport --dports 53,5353,853 --match conntrack --ctstate NEW -j DNS
+iptables -A INPUT -i ens33 -p udplite -m multiport --dports 53,5353,853 --match conntrack --ctstate NEW -j DNS
+
+## note - once the above is met we then use the DNS chain ( -A DNS ) then we match limit ( -m limit ) when then we set limit rate and burst rate ( --limit 128/sec --limit-burst 64 ) if it falls in this category then we accept ( -j ACCEPT )
+iptables -A DNS -m limit --limit 128/sec --limit-burst 64 -j ACCEPT
+
+## note - once the above specified limit gets exceeded then it jumps to the following and drops the excess traffic ##
+iptables -A DNS -j DROP
+
+
+
+
+## note - this is wrong way of doing it ##
 iptables -A INPUT -p tcp -m multiport --dports 53,5353,853 -m conntrack --ctstate NEW -m limit --limit 128/sec --limit-burst 64 -j DROP -i ens33
 iptables -A INPUT -p udp -m multiport --dports 53,5353,853 -m conntrack --ctstate NEW -m limit --limit 128/sec --limit-burst 64 -j DROP -i ens33
 iptables -A INPUT -p udplite -m multiport --dports 53,5353,853 -m conntrack --ctstate NEW -m limit --limit 128/sec --limit-burst 64 -j DROP -i ens33
