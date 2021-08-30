@@ -64,3 +64,4 @@ add address=185.216.140.180 list=additionalblacklist
 add address=198.108.66.240 list=additionalblacklist
 add address=phenome.ca list=additionalblacklist
 add address=212.95.124.190 list=additionalblacklist
+add address=185.220.205.106 list=additionalblacklist
