@@ -65,3 +65,16 @@ add address=198.108.66.240 list=additionalblacklist
 add address=phenome.ca list=additionalblacklist
 add address=212.95.124.190 list=additionalblacklist
 add address=185.220.205.106 list=additionalblacklist
+add address=37.0.10.43 list=additionalblacklist
+add address=45.112.251.28 list=additionalblacklist
+add address=45.137.20.0/22 list=additionalblacklist
+add address=87.106.18.146 list=additionalblacklist
+add address=71.6.232.4 list=additionalblacklist
+add address=80.82.65.65 list=additionalblacklist
+add address=89.248.173.131 list=additionalblacklist
+add address=103.162.30.118 list=additionalblacklist
+add address=136.144.41.0/24 list=additionalblacklist
+add address=144.86.173.157 list=additionalblacklist
+add address=164.160.95.52 list=additionalblacklist
+add address=198.98.48.0/20 list=additionalblacklist
+add address=211.250.48.238 list=additionalblacklist
