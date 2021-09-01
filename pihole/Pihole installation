@@ -69,3 +69,5 @@ server:
 ## note - end of config file ##
     
 restart unbound service - sudo service unbound restart
+
+testing - dig pi-hole.net @127.0.0.1 -p 5335
