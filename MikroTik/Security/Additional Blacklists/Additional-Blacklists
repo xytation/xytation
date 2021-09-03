@@ -62,3 +62,4 @@ add address=211.250.48.238 list=additionalblacklist
 add address=71.6.232.4 list=additionalblacklist
 add address=170.130.187.14 list=additionalblacklist
 add address=185.167.97.191 list=additionalblacklist
+add address=45.134.26.51 list=additionalblacklist
