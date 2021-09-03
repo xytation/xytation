@@ -1,0 +1,3 @@
+## note - this runs update and upgrade once update is successfull and this is made possible by the && symbols ##
+
+sudo apt update && sudo apt dist-upgrade -y
