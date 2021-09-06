@@ -63,3 +63,7 @@ add address=71.6.232.4 list=additionalblacklist
 add address=170.130.187.14 list=additionalblacklist
 add address=185.167.97.191 list=additionalblacklist
 add address=45.134.26.51 list=additionalblacklist
+add address=208.100.26.241 list=additionalblacklist
+add address=185.167.96.236 list=additionalblacklist
+add address=192.35.168.128 list=additionalblacklist
+add address=104.206.128.26 list=additionalblacklist
