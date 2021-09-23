@@ -1,0 +1,20 @@
+:local srvip ##ip of your choice##
+:local ipRecieve
+:log info "Ping $srvip start"
+
+/tool flood-ping "$srvip" count=5 do={
+ :set ipRecieve $"received"
+}
+
+:delay 5
+
+:if ($ipRecieve=0) do={
+:log info "Enabling Mangle"
+/ip firewall mangle enable [find comment=test]
+}
+:if ($ipRecieve>0) do={
+:log info "Disabling Mangle"
+/ip firewall mangle disable [find comment=test]
+}
+
+:log info "Ping $srvip end"
