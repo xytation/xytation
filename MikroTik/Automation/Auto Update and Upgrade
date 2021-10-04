@@ -1,0 +1,12 @@
+## note - to be placed in script ##
+
+/system package update
+check-for-updates
+:delay 5s
+:if ([get status] = "New version is available") do={ install }
+
+-------------------------------------------------------------------------
+
+## note - to be placed in scheduler and run daily ##
+/system routerboard upgrade
+:if ([get current-firmware]!=[get upgrade-firmware]) do={/system reboot}
