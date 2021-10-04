@@ -7,7 +7,11 @@ check-for-updates
 
 -------------------------------------------------------------------------
 
-## note - to be placed in scheduler and run daily ##
+## note - create scheduler to run above script once per day ##
+
+-------------------------------------------------------------------------
+
+## note - to be placed in scheduler and run upon boot up ##
 /system routerboard
 upgrade
 :if ([get current-firmware]!=[get upgrade-firmware]) do={/system reboot}
