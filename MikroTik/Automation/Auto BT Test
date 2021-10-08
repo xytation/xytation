@@ -1,0 +1,122 @@
+## note - For auto BT testing ##
+## all credit due ##
+## Created By: IHRMax (https://forum.mikrotik.com/viewtopic.php?t=82357) ##
+## Created by: Greencomputing (https://forum.mikrotik.com/viewtopic.php?t=69773) [ping segment] ##
+## modified by Xytation ##
+
+
+:local srvip
+
+:local txc
+:local txcA
+:local txcB
+:local txcC
+
+:local rxc
+:local rxcA
+:local rxcB
+:local rxcC
+
+:local rxta
+:local rxtaA
+:local rxtaB
+:local rxtaC
+
+:local txta
+:local txtaA
+:local txtaB
+:local txtaC
+
+:local sysname [/system identity get name]
+:local datetime "$[/system clock get date] $[/system clock get time]"
+
+:local month
+:local day
+:local year
+:local hour
+:local min
+:local filename
+:local result
+
+:set srvip ##"place remote ip here"##
+:set month [:pick $datetime 0 3]
+:set day [:pick $datetime 4 6]
+:set year [:pick $datetime 7 11]
+:set hour [:pick $datetime 12 14]
+:set min [:pick $datetime 15 17]
+:set filename "$year$month$day-$hour$min-report.txt"
+
+:log info "Ping test to $srvip started"
+:local avgRtt
+:local ipSent
+:local ipRec ; /tool flood-ping "$srvip"  count=40 do={
+  :if ($sent = 40) do={
+    :set avgRtt $"avg-rtt"
+    :set ipSent $"sent"
+    :set ipRec $"received"
+  }
+}
+:put $avgRtt
+:put $pktLss
+:put $ipSent
+:put $ipRec
+
+:delay 50
+:log info "Ping test to $srvip finished"
+
+:log info "Bandwidth-test to $srvip start"
+
+/tool bandwidth-test protocol=udp direction=both duration=30s address=$srvip user=##"user that has testing permission"## password=##"password for the user"## do={
+
+:set $txcA ($"tx-current" / 1000)
+:set $txcB ($txcA / 1000 * 1000)
+:set $txcC ($txcA - $txcB)
+:set $txcB ($txcB / 1000)
+:set $txc "$txcB.$txcC"
+
+:set $rxcA ($"rx-current" / 1000)
+:set $rxcB ($rxcA / 1000 * 1000)
+:set $rxcC ($rxcA - $rxcB)
+:set $rxcB ($rxcB / 1000)
+:set $rxc "$rxcB.$rxcC"
+
+:set $rxtaA ($"rx-total-average" / 1000)
+:set $rxtaB ($rxtaA / 1000 * 1000)
+:set $rxtaC ($rxtaA - $rxtaB)
+:set $rxtaB ($rxtaB / 1000)
+:set $rxta "$rxtaB.$rxtaC"
+
+:set $txtaA ($"tx-total-average" / 1000)
+:set $txtaB ($txtaA / 1000 * 1000)
+:set $txtaC ($txtaA - $txtaB)
+:set $txtaB ($txtaB / 1000)
+:set $txta "$txtaB.$txtaC"
+
+:set result $status
+
+}
+
+:log info "Bandwidth-test to $srvip done"
+
+
+/tool e-mail send to="Your specified email" subject="the subject you want it to be" body="
+
+$datetime
+
+Device tested from : $sysname
+
+Device tested to : $srvip
+
+Result : $result
+
+Average Latency $avgRtt ms
+Packets Sent $ipSent
+Packets Received $ipRec
+
+Upload burst speed $txc Mbps/s
+Download burst speed $rxc Mbps/s
+
+Upload total average $txta Mbps/s
+Download total average $rxta Mbps/s"
+
+:log info "Sending results via email"
