@@ -1,0 +1,4 @@
+:log warning "StartFlushing Cache"
+:delay 5
+/ip dns cache flush
+:log warning "Finished Flushing Cache"
