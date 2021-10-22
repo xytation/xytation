@@ -1,0 +1,9 @@
+## note - needed for scheduler script to function ##
+/ip firewall filter add action=jump chain=DDoS
+/ip firewall filter add action=return chain=DDoS dst-limit=128,64,src-and-dst-addresses/1s
+/ip firewall filter add action=add-src-to-address-list chain=DDoS address-list=DDoS
+
+
+## note - To be placed in scheduler and run every 5~10min ## 
+:if ([/ip firewall address-list print count-only where list="DDoS" dynamic=yes]>=5) do={/interface disable sfp1}
+:if ([/ip firewall address-list print count-only where list="DDoS" dynamic=yes]<5) do={/interface enable sfp1}
