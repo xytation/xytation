@@ -1,0 +1,38 @@
+## note - modified by thenetworkmaster ##
+
+# get the current IP address from the internet
+/tool fetch mode=http address="checkip.dynu.com" src-path="/" dst-path="/dynu.checkip.html"
+:delay 2
+:local result [/file get dynu.checkip.html contents]
+
+# parse the current IP result
+:local resultLen [:len $result]
+:local startLoc [:find $result ": " -1]
+:set startLoc ($startLoc + 2)
+:local currentIP [:pick $result $startLoc $resultLen]
+:global ddnsuser ## Username ##
+:global ddnspass ## Password ##
+:global ddnshost ## host link for ddns ##
+:global ipddns [:resolve $ddnshost];
+
+:log info ("Current IP= $currentIP")
+:log info ("DDNS set IP= $ipddns")
+
+#:global ipddns
+
+:if ($ipddns != $currentIP) do={
+:log info ("DynuDDNS: IP-Dynu = $ipddns")
+:log info ("DynuDDNS: IP-Fresh = $currentIP")
+:log info "DynuDDNS: Update IP needed, Sending UPDATE...!"
+:global str "/nic/update?hostname=$ddnshost&myip=$currentIP&myipv6=2604:4400:a:8a::f4&username=$ddnsuser&password=$ddnspass"
+:log info "currentIP is $currentIP"
+/tool fetch mode=http address="api.dynu.com" src-path="$str" dst-path="/dynu.&ddnshost.html"
+:delay 1
+:global str [/file find name="Dynu.$ddnshost"];
+/file remove $str
+:global ipddns $currentIP
+:log info "DynuDDNS: IP updated to $currentIP!"
+} else={
+:log info "DynuDDNS: No change needed";
+}
+/file remove "dynu.checkip.html"
