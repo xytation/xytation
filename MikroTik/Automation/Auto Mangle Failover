@@ -3,7 +3,9 @@
 :log info "Ping $srvip start"
 
 /tool flood-ping "$srvip" count=5 do={
- :set ipRecieve $"received"
+ :if ($sent = 40) do={
+   :set ipRecieve $"received"
+}
 }
 
 :delay 5
