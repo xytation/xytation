@@ -1,0 +1,38 @@
+## note - Auto route and mangle failover for multiple gateways ##
+
+:local srvip 1.1.1.1
+:local ipRecieve
+:local ipRec
+:log info "Ping $srvip start"
+
+/tool flood-ping "$srvip" count=5 do={
+ :set ipRecieve $"received"
+}
+:delay 1s
+:log warning "Route Check"
+:if ($ipRecieve=0) do={
+/ip route enable [find comment="test"]
+/ip route disable [find comment="test2"]
+}
+:delay 1s
+:if ($ipRecieve>0) do={
+/ip route enable [find comment="test2"]
+/ip route disable [find comment="test"]
+}
+
+:delay 3s
+/tool flood-ping "$srvip" count=5 do={
+ :set ipRec $"received"
+}
+:delay 1s
+:log warning "Mangle Check"
+:if ($ipRec=0) do={
+/ip firewall mangle enable [find comment="test2"]
+/ip firewall mangle enable [find comment="test"]
+}
+:delay 1s
+:if ($ipRec>0) do={
+/ip firewall mangle disable [find comment="test"]
+/ip firewall mangle disable [find comment="test2"]
+}
+:log info "Ping $srvip end"
