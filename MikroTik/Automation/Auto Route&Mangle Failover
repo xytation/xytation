@@ -6,7 +6,9 @@
 :log info "Ping $srvip start"
 
 /tool flood-ping "$srvip" count=5 do={
- :set ipRecieve $"received"
+ :if ($sent = 5) do={
+   :set ipRecieve $"received"
+}
 }
 :delay 1s
 :log warning "Route Check"
@@ -22,7 +24,9 @@
 
 :delay 3s
 /tool flood-ping "$srvip" count=5 do={
- :set ipRec $"received"
+ :if ($sent = 5) do={
+   :set ipRecieve $"received"
+}
 }
 :delay 1s
 :log warning "Mangle Check"
