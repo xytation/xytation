@@ -16,11 +16,7 @@
 /ip route enable [find comment="test"]
 /ip route disable [find comment="test2"]
 }
-:delay 1s
-:if ($ipRecieve>0) do={
-/ip route enable [find comment="test2"]
-/ip route disable [find comment="test"]
-}
+
 
 :delay 3s
 /tool flood-ping "$srvip" count=5 do={
