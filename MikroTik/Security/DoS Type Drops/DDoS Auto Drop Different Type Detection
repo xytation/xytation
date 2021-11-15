@@ -1,0 +1,46 @@
+## note - this is only for you to see which type of DDoS this was ##
+## note - still in progress ##
+
+/ip firewall filter
+
+add chain=input action=jump target=DDoS
+
+add action=return chain=DDoS dst-limit=128,64,src-and-dst-addresses/1s
+add action=return chain=DDoS src-address-list=Trusted-DNS
+add action=return chain=DDoS dst-address-list=Trusted-DNS
+
+add chain=DDoS protocol=tcp port=53,853,5353 in-interface=ether1 action=add-src-to-address-list address-list=DNS-AMP address-list-timeout=00:30:00
+add chain=DDoS protocol=udp port=53,853,5353 in-interface=ether1 action=add-src-to-address-list address-list=DNS-AMP address-list-timeout=00:30:00
+add chain=DDoS protocol=tcp port=119,123,433,563 in-interface=ether1 action=add-src-to-address-list address-list=NTP-AMP address-list-timeout=00:30:00
+add chain=DDoS protocol=udp port=119,123,433,563 in-interface=ether1 action=add-src-to-address-list address-list=NTP-AMP address-list-timeout=00:30:00
+add chain=DDoS protocol=tcp port=1900 in-interface=ether1 action=add-src-to-address-list address-list="SSDP/UPnP" address-list-timeout=00:30:00
+add chain=DDoS protocol=udp port=1900 in-interface=ether1 action=add-src-to-address-list address-list="SSDP/UPnP" address-list-timeout=00:30:00
+add chain=DDoS protocol=tcp in-interface=ether1 action=add-src-to-address-list address-list=TCP address-list-timeout=00:30:00
+add chain=DDoS protocol=udp in-interface=ether1 action=add-src-to-address-list address-list=UDP address-list-timeout=00:30:00
+add chain=DDoS protocol=icmp in-interface=ether1 action=add-src-to-address-list address-list=ICMP address-list-timeout=00:30:00
+add action=add-src-to-address-list chain=DDoS address-list=DDoS address-list-timeout=00:30:00
+
+
+## note - To be placed in scheduler and run every 5~10min ##
+## note - the ">=20" and the "<5" can be changed to suite your specific needs ##
+
+:if ([/ip firewall address-list print count-only where list="DNS-AMP" dynamic=yes]>=20) do={/interface disable ether1}
+:if ([/ip firewall address-list print count-only where list="DNS-AMP" dynamic=yes]<5) do={/interface enable ether1}
+
+:if ([/ip firewall address-list print count-only where list="NTP-AMP" dynamic=yes]>=20) do={/interface disable ether1}
+:if ([/ip firewall address-list print count-only where list="NTP-AMP" dynamic=yes]<5) do={/interface enable ether1}
+
+:if ([/ip firewall address-list print count-only where list="SSDP/UPnP" dynamic=yes]>=20) do={/interface disable ether1}
+:if ([/ip firewall address-list print count-only where list="SSDP/UPnP" dynamic=yes]<5) do={/interface enable ether1}
+
+:if ([/ip firewall address-list print count-only where list="TCP" dynamic=yes]>=20) do={/interface disable ether1}
+:if ([/ip firewall address-list print count-only where list="TCP" dynamic=yes]<5) do={/interface enable ether1}
+
+:if ([/ip firewall address-list print count-only where list="UDP" dynamic=yes]>=20) do={/interface disable ether1}
+:if ([/ip firewall address-list print count-only where list="UDP" dynamic=yes]<5) do={/interface enable ether1}
+
+:if ([/ip firewall address-list print count-only where list="ICMP" dynamic=yes]>=20) do={/interface disable ether1}
+:if ([/ip firewall address-list print count-only where list="ICMP" dynamic=yes]<5) do={/interface enable ether1}
+
+:if ([/ip firewall address-list print count-only where list="DDoS" dynamic=yes]>=20) do={/interface disable ether1}
+:if ([/ip firewall address-list print count-only where list="DDoS" dynamic=yes]<5) do={/interface enable ether1}
