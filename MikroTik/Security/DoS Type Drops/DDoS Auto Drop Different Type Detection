@@ -32,3 +32,6 @@ add action=add-src-to-address-list chain=DDoS address-list=DDoS address-list-tim
 :if ([/ip firewall address-list print count-only where list="DDoS" dynamic=yes]>=20) do={/interface disable ether1}
 
 ## note - can be solved with netwatch for clients to stay on, but note you will need more than one fiber entry piont for this to work ##
+## note - with this solution your IP that gets attacked can get disabled on the physical layer and the clients can run through the backup fiber or internet source ##
+/ip route add dst-route=8.8.8.8 gateway=##upstream ip or gateway##
+/tool netwatch add host=8.8.8.8 up-script="/ip firewall mangle disable [find comment="Client Backups"]" down-script="/ip firewall mangle enable [find comment="Client Backups"]"
