@@ -23,13 +23,17 @@ add action=add-src-to-address-list chain=DDoS address-list=DDoS address-list-tim
 
 ## note - To be placed in scheduler and run every 5~10min ##
 ## note - the ">=20" and the "<5" can be changed to suite your specific needs ##
-:if ([/ip firewall address-list print count-only where list="DNS-AMP" dynamic=yes]>=20) do={/interface disable ether1}
-:if ([/ip firewall address-list print count-only where list="NTP-AMP" dynamic=yes]>=20) do={/interface disable ether1}
-:if ([/ip firewall address-list print count-only where list="SSDP/UPnP" dynamic=yes]>=20) do={/interface disable ether1}
-:if ([/ip firewall address-list print count-only where list="TCP" dynamic=yes]>=20) do={/interface disable ether1}
-:if ([/ip firewall address-list print count-only where list="UDP" dynamic=yes]>=20) do={/interface disable ether1}
-:if ([/ip firewall address-list print count-only where list="ICMP" dynamic=yes]>=20) do={/interface disable ether1}
-:if ([/ip firewall address-list print count-only where list="DDoS" dynamic=yes]>=20) do={/interface disable ether1}
+:local DNS [/ip firewall address-list print count-only where list=DNS-AMP]
+:local NTP [/ip firewall address-list print count-only where list=NTP-AMP]
+:local UPnP [/ip firewall address-list print count-only where list="SSDP/UPnP"]
+:local TCP [/ip firewall address-list print count-only where list=TCP]
+:local UDP [/ip firewall address-list print count-only where list=UDP]
+:local ICMP [/ip firewall address-list print count-only where list=ICMP]
+:local DDoS [/ip firewall address-list print count-only where list=DDoS]
+:local CTotal ($DNS+$NTP+$UPnP+$TCP+$UDP+$ICMP+$DDoS)
+
+:if ($CTotal>=20) do={/interface disbale [find comment="Main Internet"]}
+:if ($CTotal<=10) do={/interface enable [find comment="Main Internet"]}
 
 ## note - can be solved with netwatch for clients to stay on, but note you will need more than one fiber entry piont for this to work ##
 ## note - with this solution your IP that gets attacked can get disabled on the physical layer and the clients can run through the backup fiber or internet source ##
