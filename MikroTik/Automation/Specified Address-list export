@@ -1,0 +1,17 @@
+## note - all credit to creator: ericksetiawan link: https://forum.mikrotik.com/viewtopic.php?t=137848 ##
+## note - this is to export specific parts of an address-list and then exporting it ##
+
+{
+	:local listName "Server"; #change this
+	:local fileName "exported.rsc"; #change this
+	:local buffer;
+
+	:global filteredList [/ip firewall address-list print as-value where list=$listName && dynamic=no];
+	:foreach i in=$filteredList do={
+		:set $buffer ($buffer."add list=".$listName." address=".$i->"address"."; ");
+	};
+	/file print file=$fileName where name="";
+	:delay 1s;
+	:set $buffer ("/ip firewall address-list; ".$buffer);
+	/file set $fileName contents=$buffer;
+}
