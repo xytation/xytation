@@ -1,0 +1,5 @@
+## note - still looking into how to remove specific types of cache from dns, so here is the next best solution ##
+## note - to be run in scheduler the ">=50" can be changed to suite your needs ##
+## note - it is also recommended that you set the ttl to 5min to help the process aswell ##
+
+:if ([/ip dns cache all print count-only where negative=yes]>=50) do={/ip dns cache flush}
