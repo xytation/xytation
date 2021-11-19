@@ -3,7 +3,7 @@
 ## note - add as full user (root user) ##
 ## note - this does add almost 10000~11000 ip's ##
 
-:log info "Updating database"
+:log warning "Updating database"
 :delay 60
 ip firewall address-list
 :local update do={
@@ -16,7 +16,7 @@ remove [find list=blacklist comment=$description]
 }
 :set data [:pick $data ([:find $data "\n"]+1) [:len $data]]
 }
-} on-error={:log warning "Address list <$description> update failed"}
+} on-error={:log error "Address list <$description> update failed"}
 }
 
 $update url=https://feodotracker.abuse.ch/downloads/ipblocklist_recommended.txt description="BotNetC&C" delimiter=("\r")
@@ -27,4 +27,4 @@ $update url=https://feodotracker.abuse.ch/downloads/ipblocklist.txt description=
 $update url=https://raw.githubusercontent.com/pallebone/StrictBlockPAllebone/master/BlockIP.txt description="Pallebone IPs" delimiter=("\r")
 $update url=https://lists.blocklist.de/lists/all.txt description="Blocklist.de" delimiter=("\n")
 $update url=https://raw.githubusercontent.com/stamparm/ipsum/master/levels/5.txt description="Blacklist level5" delimiter=("\n")
-:log info "Update Complete"
+:log warning "Update Complete"
