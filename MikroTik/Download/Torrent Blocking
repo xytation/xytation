@@ -1,0 +1,25 @@
+## note - can be done under the dns ##
+/ip dns static
+add address=127.0.0.1 regexp=torrent
+add address=127.0.0.1 regexp=magnet
+add address=127.0.0.1 regexp=tracker
+add address=127.0.0.1 regexp=getpeers
+add address=127.0.0.1 regexp=get_peers
+add address=127.0.0.1 regexp=info_hash
+add address=127.0.0.1 regexp=announce_peers
+add address=127.0.0.1 regexp=find_node
+
+## note - can be done under firewall filter  ##
+/ip firewall filter
+add chain=forward content=find_node
+add chain=forward content=torrent action=drop
+add chain=forward content=tracker action=drop
+add chain=forward content=getpeers action=drop
+add chain=forward content=info_hash action=drop
+add chain=forward content=announce_peers action=drop
+add chain=forward tls-host=find_node
+add chain=forward tls-host=torrent action=drop
+add chain=forward tls-host=tracker action=drop
+add chain=forward tls-host=getpeers action=drop
+add chain=forward tls-host=info_hash action=drop
+add chain=forward tls-host=announce_peers action=drop
