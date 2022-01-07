@@ -22,8 +22,8 @@ add action=add-src-to-address-list in-interface=ether1 chain=DDoS address-list="
 add action=add-src-to-address-list in-interface=ether1 chain=DDoS address-list="FIN/RST" address-list-timeout=00:30:00 protocol=tcp tcp-flags=fin,rst
 add action=add-src-to-address-list in-interface=ether1 chain=DDoS address-list=SNMP protocol=tcp port=161,162 address-list-timeout=00:30:00
 add action=add-src-to-address-list in-interface=ether1 chain=DDoS address-list=SNMP protocol=udp port=161,162 address-list-timeout=00:30:00
-add action=add-src-to-address-list in-interface=ether1 chain=DDoS address-list=VOIP protocol=udp port=5060-5682 address-list-timeout=00:30:00
-add action=add-src-to-address-list in-interface=ether1 chain=DDoS address-list=VOIP protocol=tcp port=5060-5682 address-list-timeout=00:30:00
+add action=add-src-to-address-list in-interface=ether1 chain=DDoS address-list=VOIP protocol=udp port=5060-5082 address-list-timeout=00:30:00
+add action=add-src-to-address-list in-interface=ether1 chain=DDoS address-list=VOIP protocol=tcp port=5060-5082 address-list-timeout=00:30:00
 add chain=DDoS protocol=tcp in-interface=ether1 action=add-src-to-address-list address-list=TCP address-list-timeout=00:30:00
 add chain=DDoS protocol=udp in-interface=ether1 action=add-src-to-address-list address-list=UDP address-list-timeout=00:30:00
 add action=add-src-to-address-list in-interface=ether1 chain=DDoS address-list=DDoS address-list-timeout=00:30:00
