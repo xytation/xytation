@@ -60,4 +60,4 @@ add action=add-src-to-address-list in-interface=ether1 chain=DDoS address-list=D
 
 
 ## note - effort to force connections to re-esatablish ##
-/tool netwatch add host=8.8.8.8 up-script="/ip firewall connection tracking set enabled=no;/ip firewall connection tracking set enabled=yes;/ip firewall connection tracking set enabled=auto" down-script="/ip firewall connection tracking set enabled=no;/ip firewall connection tracking set enabled=yes;/ip firewall connection tracking set enabled=auto"
+/tool netwatch add host=8.8.8.8 up-script="/ip firewall connection tracking set enabled=no loose-tcp-tracking=no;delay 5s;/ip firewall connection tracking set enabled=yes loose-tcp-tracking=yes;delay 5s;/ip firewall connection tracking set enabled=auto loose-tcp-tracking=yes" down-script="/ip firewall connection tracking set enabled=no loose-tcp-tracking=no;delay 5s;/ip firewall connection tracking set enabled=yes loose-tcp-tracking=yes;delay 5s;/ip firewall connection tracking set enabled=auto loose-tcp-tracking=yes"
