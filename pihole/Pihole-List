@@ -47,7 +47,6 @@ https://block.energized.pro/extensions/regional/formats/domains.txt
 https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Hosts/GoodbyeAds.txt
 https://gitlab.com/The_Quantum_Alpha/the-quantum-ad-list/-/raw/master/Individual%20lists/The_Quantum_Simply-ads-list.txt
 https://gitlab.com/The_Quantum_Alpha/the-quantum-ad-list/-/raw/master/Individual%20lists/The_Quantum_Abuse-List.txt
-https://gitlab.com/The_Quantum_Alpha/the-quantum-ad-list/-/raw/master/Individual%20lists/Extreme%20lists/The_Quantum_Extreme_Youtube_Ad-List.txt
 https://gitlab.com/The_Quantum_Alpha/the-quantum-ad-list/-/raw/master/For%20hosts%20file/The_Quantum_Ad-List.txt
 https://raw.githubusercontent.com/notracking/hosts-blocklists/master/hostnames.txt
 https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Extension/GoodbyeAds-Samsung-AdBlock.txt
@@ -57,4 +56,5 @@ https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/android-tracki
 https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-blocklist.txt
 https://raw.githubusercontent.com/CamelCase11/UnifiedHosts/master/hosts.all
 https://gitlab.com/The_Quantum_Alpha/the-quantum-ad-list/-/raw/master/Individual%20lists/The_Quantum_Privacy-list.txt
-https://raw.githubusercontent.com/xytation/xytation/main/pihole/ADS
+https://raw.githubusercontent.com/xytation/xytation/main/pihole/ADBlock.txt
+https://raw.githubusercontent.com/xytation/xytation/main/pihole/ADBlock2.txt
