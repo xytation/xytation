@@ -18,7 +18,7 @@ add chain=DDoS protocol=udp port=1900 in-interface=ether1 action=add-src-to-addr
 add chain=DDoS protocol=icmp in-interface=ether1 action=add-src-to-address-list address-list=ICMP address-list-timeout=00:30:00
 add action=add-src-to-address-list in-interface=ether1 chain=DDoS address-list=SYN address-list-timeout=00:30:00 protocol=tcp tcp-flags=syn
 add action=add-src-to-address-list in-interface=ether1 chain=DDoS address-list="SYN/ACK" address-list-timeout=00:30:00 protocol=tcp tcp-flags=syn,ack
-add action=add-src-to-address-list in-interface=ether1 chain=DDoS address-list="ACK/SYN" address-list-timeout=00:30:00 protocol=tcp tcp-flags=ack,psh
+add action=add-src-to-address-list in-interface=ether1 chain=DDoS address-list="ACK/PSH" address-list-timeout=00:30:00 protocol=tcp tcp-flags=ack,psh
 add action=add-src-to-address-list in-interface=ether1 chain=DDoS address-list="FIN/RST" address-list-timeout=00:30:00 protocol=tcp tcp-flags=fin,rst
 add action=add-src-to-address-list in-interface=ether1 chain=DDoS address-list=SNMP protocol=tcp port=161,162 address-list-timeout=00:30:00
 add action=add-src-to-address-list in-interface=ether1 chain=DDoS address-list=SNMP protocol=udp port=161,162 address-list-timeout=00:30:00
@@ -41,11 +41,12 @@ add action=add-src-to-address-list in-interface=ether1 chain=DDoS address-list=D
 :local ICMP [/ip firewall address-list print count-only where list=ICMP]
 :local SYN [/ip firewall address-list print count-only where list=SYN]
 :local ACK [/ip firewall address-list print count-only where list="SYN/ACK"]
+:local PSH [/ip firewall address-list print count-only where list="ACK/PSH"]
 :local SNMP [/ip firewall address-list print count-only where list=SNMP]
 :local VOIP [/ip firewall address-list print count-only where list=VOIP]
 :local DDoS [/ip firewall address-list print count-only where list=DDoS]
 :local RST [/ip firewall address-list print count-only where list="FIN/RST"]
-:local CTotal ($DNS+$NTP+$UPnP+$TCP+$UDP+$ICMP+$DDoS+$SYN+$ACK+$SNMP+$VOIP+$RST)
+:local CTotal ($DNS+$NTP+$UPnP+$TCP+$UDP+$ICMP+$DDoS+$SYN+$ACK+$SNMP+$VOIP+$RST+$PSH)
 
 :if ($CTotal>=20) do={/interface disbale [find comment="Main Internet"]}
 :if ($CTotal<=10) do={/interface enable [find comment="Main Internet"]}
