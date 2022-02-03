@@ -1,7 +1,8 @@
 ## note - this is for auto redirect and detection of what type of DDoS it is that your experiencing ##
+## note - this is to try and remove as much strain from the router as much as possible when experiencing a DDoS ##
 
 /ip settings set tcp-syncookies=yes
-
+/ip settings set rp-filter=loose
 
 /ip firewall filter
 
