@@ -1,5 +1,8 @@
 ## note - needed for scheduler script to function ##
 ## note - "dst-limit" can be changed to suite your needs as required ##
+
+/ip settings set tcp-syncookies=yes
+
 /ip firewall filter add action=jump chain=DDoS
 /ip firewall filter add action=return chain=DDoS dst-limit=128,64,src-and-dst-addresses/1s
 /ip firewall filter add action=add-src-to-address-list chain=DDoS address-list=DDoS
@@ -15,3 +18,7 @@
 ## note - with this solution your IP that gets attacked can get disabled on the physical layer and the clients can run through the backup fiber or internet source ##
 /ip route add dst-route=8.8.8.8 gateway=##upstream ip or gateway##
 /tool netwatch add host=8.8.8.8 up-script="/ip firewall mangle disable [find comment="Client Backups"]" down-script="/ip firewall mangle enable [find comment="Client Backups"]"
+
+
+## note - effort to force connections to re-esatablish ##
+/tool netwatch add host=8.8.8.8 up-script="/ip firewall connection tracking set enabled=no loose-tcp-tracking=no;delay 5s;/ip firewall connection tracking set enabled=yes loose-tcp-tracking=no;delay 5s;/ip firewall connection tracking set enabled=auto loose-tcp-tracking=no" down-script="/ip firewall connection tracking set enabled=no loose-tcp-tracking=no;delay 5s;/ip firewall connection tracking set enabled=yes loose-tcp-tracking=no;delay 5s;/ip firewall connection tracking set enabled=auto loose-tcp-tracking=no"
