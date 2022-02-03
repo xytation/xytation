@@ -1,4 +1,7 @@
-## note - this is only for you to see which type of DDoS this was ##
+## note - this is for auto redirect and detection of what type of DDoS it is that your experiencing ##
+
+/ip settings set tcp-syncookies=yes
+
 
 /ip firewall filter
 
