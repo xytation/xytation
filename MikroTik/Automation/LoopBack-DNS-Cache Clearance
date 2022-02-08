@@ -1,0 +1,6 @@
+## note - to be used if you don't dns level block domains on router and making their ip 127.0.0.1 ##
+
+:log warning "StartFlushing Cache"
+:delay 5
+:if ([/ip dns cache all print count-only where data=127.0.0.1]=>50) do={ip dns cache flush}
+:log warning "Finished Flushing Cache"
