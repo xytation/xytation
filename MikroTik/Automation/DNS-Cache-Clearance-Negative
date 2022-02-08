@@ -1,0 +1,4 @@
+:log warning "StartFlushing Cache"
+:delay 5
+:if ([/ip dns cache all print count-only where negative=yes]=>50) do={ip dns cache flush}
+:log warning "Finished Flushing Cache"
